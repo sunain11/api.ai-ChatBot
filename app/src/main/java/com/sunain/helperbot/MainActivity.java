@@ -48,8 +48,6 @@ public class MainActivity extends AppCompatActivity implements AIListener {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.RECORD_AUDIO},1);
-
-
         recyclerView =findViewById(R.id.recyclerView);
         editText = findViewById(R.id.editText);
         addBtn = findViewById(R.id.addBtn);
@@ -58,15 +56,12 @@ public class MainActivity extends AppCompatActivity implements AIListener {
         linearLayoutManager.setStackFromEnd(true);
         recyclerView.setLayoutManager(linearLayoutManager);
         rcadapter=new Recycleradapternew(this,chatList);
-
         String reply = "Hello\r\nr I am HelperBot here to solve your excel problems.";
         reply=reply.replaceAll("\r\nr","\n");
         ChatMessage chatMessage = new ChatMessage(reply, "bot");
         chatList.add(chatMessage);
         rcadapter.notifyDataSetChanged();
-
         recyclerView.smoothScrollToPosition(rcadapter.getItemCount() - 1);
-
         final AIConfiguration config = new AIConfiguration("fa8bab2ebaf542dbbf9952b2b03ce206",
                 AIConfiguration.SupportedLanguages.English,
                 AIConfiguration.RecognitionEngine.System);
